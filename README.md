@@ -9,7 +9,7 @@ _ Blog
 _ Portfolios
 - Drag and drop interface
 
-### Cide Example
+### Code Example
 
 ```ruby
 def my_great_method
