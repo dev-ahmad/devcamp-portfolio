@@ -2,7 +2,15 @@ class PortfoliosController < ApplicationController
 
 	def index
 		@portfolio_items = Portfolio.all
+		# @portfolio_items = Portfolio.angular
+		# @portfolio_items = Portfolio.where(subtitle: 'Ruby on Rails')
+		# @portfolio_items = Portfolio.ruby_on_rails_portfolio_items
 	end
+
+	def angular
+		@angular_portfolio_items = Portfolio.angular
+	end
+
 
 	def new
 		@portfolio_items = Portfolio.new
