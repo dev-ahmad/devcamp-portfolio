@@ -2,14 +2,25 @@ class PortfoliosController < ApplicationController
 
 	def index
 		@portfolio_items = Portfolio.all
+		# render json: @portfolio_items
+		# @portfolio_items = Portfolio.angular
+		# @portfolio_items = Portfolio.where(subtitle: 'Ruby on Rails')
+		# @portfolio_items = Portfolio.ruby_on_rails_portfolio_items
 	end
+
+	def angular
+		@angular_portfolio_items = Portfolio.angular
+	end
+
 
 	def new
 		@portfolio_items = Portfolio.new
+		3.times{ @portfolio_items.technologies.build  }
 	end
 
 	def create
-    @portfolio_items = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))
+    @portfolio_items = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body,
+			technologies_attributes: [:name]))
 
     respond_to do |format|
       if @portfolio_items.save
