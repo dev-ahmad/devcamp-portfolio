@@ -2,7 +2,7 @@ class PortfoliosController < ApplicationController
 
 	def index
 		@portfolio_items = Portfolio.all
-		render json: @portfolio_items
+		# render json: @portfolio_items
 		# render json: @portfolio_items
 		# @portfolio_items = Portfolio.angular
 		# @portfolio_items = Portfolio.where(subtitle: 'Ruby on Rails')
@@ -55,7 +55,7 @@ class PortfoliosController < ApplicationController
 
   def show
     @portfolio_items = Portfolio.find(params[:id])
-		render json: @portfolio_items
+		# render json: @portfolio_items
   end
 
   def destroy
