@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20180128211607) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "blogs", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -22,12 +19,12 @@ ActiveRecord::Schema.define(version: 20180128211607) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.integer "status", default: 0
-    t.bigint "topic_id"
+    t.integer "topic_id"
     t.index ["slug"], name: "index_blogs_on_slug", unique: true
     t.index ["topic_id"], name: "index_blogs_on_topic_id"
   end
 
-  create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
+  create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
@@ -59,7 +56,7 @@ ActiveRecord::Schema.define(version: 20180128211607) do
 
   create_table "technologies", force: :cascade do |t|
     t.string "name"
-    t.bigint "portfolio_id"
+    t.integer "portfolio_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["portfolio_id"], name: "index_technologies_on_portfolio_id"
@@ -89,5 +86,4 @@ ActiveRecord::Schema.define(version: 20180128211607) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "blogs", "topics"
 end
